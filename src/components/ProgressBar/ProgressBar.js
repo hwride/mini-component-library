@@ -9,7 +9,7 @@ const MIN = 0;
 const MAX = 100;
 
 const ProgressBar = ({ value, size }) => {
-  return <Wrapper value={value}>
+  return <Wrapper value={value} size={size}>
     <Bar value={value} size={size} />
   </Wrapper>;
 };
@@ -27,7 +27,8 @@ const Wrapper = styled.div.attrs(props => ({
     } else {
       return '4px';
     }
-  }}
+  }};
+  ${({size}) => size === 'large' && 'padding: 4px;'}
 `;
 
 const Bar = styled.div`
@@ -56,7 +57,6 @@ const Bar = styled.div`
 `
 
 function getPercent(a, b) {
-  debugger
   return ((a/b) * 100);
 }
 
