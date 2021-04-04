@@ -41,6 +41,7 @@ const Wrapper = styled.div.attrs(props => ({
   background: ${COLORS.transparentGray15};
   border-radius: ${p => SIZES[p.size].borderRadius}px;
   padding: ${p => SIZES[p.size].padding}px;
+  box-shadow: inset 0px 2px 4px ${COLORS.transparentGray35};
 `;
 
 const Bar = styled.div`
