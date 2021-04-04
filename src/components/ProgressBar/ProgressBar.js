@@ -45,14 +45,14 @@ const Bar = styled.div`
   width: ${props => getPercent(props.value, MAX)}%;
   background: ${COLORS.primary};
   border-radius: ${props => {
-    const {size} = props;
-    if(size === 'small') {
-      return '4px 0px 0px 4px';
-    } else if(size === 'large') {
-      return '8px 0px 0px 8px';
-    } else {
-      return '4px 0px 0px 4px';
-    }
+    const radiusBaseSize = {
+      small: '4',
+      medium: '4',
+      large: '8',
+    }[props.size];
+    const remaining = MAX - props.value;
+    const radiusSize = remaining >= 1 ? 0 :(1-remaining) * radiusBaseSize;
+    return `${radiusSize}px ${radiusSize}px ${radiusSize}px ${radiusSize}px`;
   }};
 `
 
