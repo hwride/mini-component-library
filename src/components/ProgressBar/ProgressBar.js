@@ -28,7 +28,11 @@ const MAX = 100;
 
 const ProgressBar = ({ value, size }) => {
   return <Wrapper value={value} size={size}>
-    <Bar value={value} size={size} />
+    <BarWrapper size={size}>
+      <Bar value={value} size={size}>
+          <VisuallyHidden>{value}</VisuallyHidden>
+      </Bar>
+    </BarWrapper>
   </Wrapper>;
 };
 
@@ -44,16 +48,16 @@ const Wrapper = styled.div.attrs(props => ({
   box-shadow: inset 0px 2px 4px ${COLORS.transparentGray35};
 `;
 
+const BarWrapper = styled.div`
+  border-radius: 4px 4px 4px 4px;
+  overflow: hidden;
+`;
+
 const Bar = styled.div`
   height: ${p => SIZES[p.size].height}px;
   width: ${props => getPercent(props.value, MAX)}%;
   background: ${COLORS.primary};
-  border-radius: ${p => {
-    const radiusBaseSize = SIZES[p.size].borderRadius;
-    const remaining = MAX - p.value;
-    const radiusSize = remaining >= 1 ? 0 :(1-remaining) * radiusBaseSize;
-    return `${radiusBaseSize}px ${radiusSize}px ${radiusSize}px ${radiusBaseSize}px`;
-  }};
+  border-radius: 4px 0 0 4px;
 `
 
 function getPercent(a, b) {
