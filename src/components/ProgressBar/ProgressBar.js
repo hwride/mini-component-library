@@ -5,6 +5,24 @@ import styled from 'styled-components';
 import { COLORS } from '../../constants';
 import VisuallyHidden from '../VisuallyHidden';
 
+const SIZES = {
+  small: {
+    height: 8,
+    padding: 0,
+    borderRadius: 4,
+  },
+  medium: {
+    height: 12,
+    padding: 0,
+    borderRadius: 4,
+  },
+  large: {
+    height: 16,
+    padding: 4,
+    borderRadius: 8,
+  }
+};
+
 const MIN = 0;
 const MAX = 100;
 
@@ -21,38 +39,19 @@ const Wrapper = styled.div.attrs(props => ({
   'aria-valuemax': MAX,
 }))`
   background: ${COLORS.transparentGray15};
-  border-radius: ${({size}) => {
-    if(size === 'large') {
-      return '8px';
-    } else {
-      return '4px';
-    }
-  }};
-  ${({size}) => size === 'large' && 'padding: 4px;'}
+  border-radius: ${p => SIZES[p.size].borderRadius}px;
+  padding: ${p => SIZES[p.size].padding}px;
 `;
 
 const Bar = styled.div`
-  height: ${props => {
-    const {size} = props;
-    if(size === 'small') {
-      return '8px';
-    } else if(size === 'large') {
-      return '16px';
-    } else {
-      return '12px';
-    }
-  }};
+  height: ${p => SIZES[p.size].height}px;
   width: ${props => getPercent(props.value, MAX)}%;
   background: ${COLORS.primary};
-  border-radius: ${props => {
-    const radiusBaseSize = {
-      small: '4',
-      medium: '4',
-      large: '8',
-    }[props.size];
-    const remaining = MAX - props.value;
+  border-radius: ${p => {
+    const radiusBaseSize = SIZES[p.size].borderRadius;
+    const remaining = MAX - p.value;
     const radiusSize = remaining >= 1 ? 0 :(1-remaining) * radiusBaseSize;
-    return `${radiusSize}px ${radiusSize}px ${radiusSize}px ${radiusSize}px`;
+    return `${radiusBaseSize}px ${radiusSize}px ${radiusSize}px ${radiusBaseSize}px`;
   }};
 `
 
