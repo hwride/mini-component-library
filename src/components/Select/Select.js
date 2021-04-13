@@ -11,7 +11,7 @@ const Select = ({ label, value, onChange, children }) => {
   return (<Wrapper>
       {label}
       <SelectAndIconWrapper>
-        <SelectWrapper value={value} onChange={onChange}>
+        <SelectWrapper value={value} onChange={onChange} displayedValue={displayedValue}>
           {children}
         </SelectWrapper>
         <PositionedIcon id='chevron-down' size={24} />
@@ -37,10 +37,10 @@ const SelectWrapper = styled.select`
   background: ${COLORS.transparentGray15};
   color: inherit;
   border: none;
+  width: calc(${props => props.displayedValue.length}ch + 48px);
   margin-left: 12px;
   padding: 12px;
   padding-left: 16px;
-  padding-right: 52px;
   border-radius: 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
