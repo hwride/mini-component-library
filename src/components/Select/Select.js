@@ -54,6 +54,7 @@ const PositionedIcon = styled(Icon)`
   margin-top: auto;
   margin-bottom: auto;
   right: 8px;
+  pointer-events: none; /* Stop clicks being intercepted by the icon. */
 `;
 
 export default Select;
