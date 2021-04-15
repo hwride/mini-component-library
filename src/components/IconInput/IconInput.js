@@ -29,7 +29,7 @@ const Wrapper = styled.div.attrs({tabIndex: 0})`
   padding-top: 4px;
   padding-bottom: 4px;
   white-space: nowrap;
-  font-size: ${props => props.size === 'small' ? '14' : '18'}px;
+  font-size: ${props => (props.size === 'small' ? 14 : 18)/16}rem;
   width: ${props => props.width}px;
   border-bottom: ${props => props.size === 'small' ? '1' : '2'}px solid ${COLORS.black};
   color: ${COLORS.gray700};
