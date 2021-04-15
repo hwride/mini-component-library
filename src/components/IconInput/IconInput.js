@@ -35,7 +35,7 @@ const Wrapper = styled.div.attrs({tabIndex: 0})`
   &:hover {
     color: ${COLORS.black};
   }
-  &:focus {
+  &:focus-within {
     outline: 1px dotted #212121;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: 2px;
