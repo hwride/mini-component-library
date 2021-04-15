@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import styled from 'styled-components';
 
 import { COLORS } from '../../constants';
@@ -13,11 +13,12 @@ const IconInput = ({
   size,
   placeholder,
 }) => {
+  const textInput = useRef(null);
   return <Wrapper size={size} width={width}>
     <VisuallyHidden>{label}</VisuallyHidden>
-    <IconStyled id={icon} size={size === 'small' ? '16' : '24'} sizeEnum={size} />
+    <IconStyled id={icon} size={size === 'small' ? '16' : '24'} sizeEnum={size} onClick={() => textInput.current.focus()} />
     <InputWrapper size={size}>
-      <Input type='text' placeholder={placeholder} size={size} />
+      <Input type='text' placeholder={placeholder} size={size} ref={textInput} />
     </InputWrapper>
   </Wrapper>;
 };
