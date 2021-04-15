@@ -16,11 +16,14 @@ const IconInput = ({
   return <Wrapper size={size} width={width}>
     <VisuallyHidden>{label}</VisuallyHidden>
     <IconStyled id={icon} size={size === 'small' ? '16' : '24'} sizeEnum={size} />
-    <Input type='text' placeholder={placeholder} size={size} />
+    <InputWrapper size={size}>
+      <Input type='text' placeholder={placeholder} size={size} />
+    </InputWrapper>
   </Wrapper>;
 };
 
 const Wrapper = styled.div.attrs({tabIndex: 0})`
+  position: relative;
   display: inline-block;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -45,12 +48,21 @@ const IconStyled = styled(Icon)`
   vertical-align: middle;
 `;
 
+const InputWrapper = styled.div`
+  position: absolute;
+  left: ${props => props.size === 'small' ? '20' : '30'}px;
+  top: 4px;
+  bottom: 4px;
+  right: 2px;
+`;
+
 const Input = styled.input`
   display: inline-block;
+  width: 100%;
+  height: 100%;
   font-size: inherit;
   color: inherit;
   border: none;
-  vertical-align: middle;
   outline: none;
 `;
 
