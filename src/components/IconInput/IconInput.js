@@ -28,6 +28,10 @@ const Wrapper = styled.div.attrs({tabIndex: 0})`
   font-size: ${props => props.size === 'small' ? '14' : '18'}px;
   width: ${props => props.width}px;
   border-bottom: ${props => props.size === 'small' ? '1' : '2'}px solid ${COLORS.black};
+  color: ${COLORS.gray700};
+  &:hover {
+    color: ${COLORS.black};
+  }
   &:focus {
     outline: 1px dotted #212121;
     outline: 5px auto -webkit-focus-ring-color;
@@ -44,6 +48,7 @@ const IconStyled = styled(Icon)`
 const Input = styled.input`
   display: inline-block;
   font-size: inherit;
+  color: inherit;
   border: none;
   vertical-align: middle;
   outline: none;
