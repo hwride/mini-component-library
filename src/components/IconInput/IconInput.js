@@ -25,10 +25,10 @@ const Wrapper = styled.div`
   white-space: nowrap;
   font-size: ${props => props.size === 'small' ? '14' : '18'}px;
   width: ${props => props.width}px;
+  border-bottom: ${props => props.size === 'small' ? '1' : '2'}px solid ${COLORS.black};
 `;
 
 const IconStyled = styled(Icon)`
-  margin-left: 16px;
   margin-right: 8px;
   display: inline-block;
 `;
@@ -37,7 +37,6 @@ const Input = styled.input`
   display: inline-block;
   font-size: inherit;
   border: none;
-  border-bottom: ${props => props.size === 'small' ? '1' : '2'}px solid ${COLORS.black};
 `;
 
 export default IconInput;
