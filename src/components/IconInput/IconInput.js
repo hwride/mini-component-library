@@ -14,9 +14,9 @@ const IconInput = ({
   placeholder,
 }) => {
   return <Wrapper size={size} width={width}>
-    {label}
+    <VisuallyHidden>{label}</VisuallyHidden>
     <IconStyled id={icon} size={size === 'small' ? '16' : '24'} />
-    <Input type='text' placeholder={placeholder} />
+    <Input type='text' placeholder={placeholder} size={size} />
   </Wrapper>;
 };
 
@@ -36,6 +36,8 @@ const IconStyled = styled(Icon)`
 const Input = styled.input`
   display: inline-block;
   font-size: inherit;
+  border: none;
+  border-bottom: ${props => props.size === 'small' ? '1' : '2'}px solid ${COLORS.black};
 `;
 
 export default IconInput;
